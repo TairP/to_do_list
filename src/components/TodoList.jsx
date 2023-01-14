@@ -30,6 +30,7 @@ function TodoList() {
         return todo
       })
       setTodos(updatedTodos)
+      console.log('completed task')
     }
 
     const removeTodo = id => {
