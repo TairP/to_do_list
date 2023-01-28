@@ -42,12 +42,6 @@ function TodoRow({todos, completeTodo, removeTodo, updateTodo}) {
   </Row>
 ))
 }
-// value={{ color: 'blue', size: '50px' }}
-// .complete {
-//   text-decoration: line-through;
-//   opacity: 0.4;
-// }.attrs({ type: "checkbox" })``;
-// $mode={todo.isCompleted ? 'todo-row complete' : 'todo-row'}
 
 export default TodoRow
 
@@ -55,7 +49,6 @@ const Form = styled.div`
 display: flex;
 flex-wrap: wrap;
 font-size: 15px;
-padding: 20px;
 width: 87%;
 margin: auto;
 `

@@ -5,6 +5,22 @@ import styled from "styled-components";
 
 function TodoList() {
     const [todos, setTodos] = useState([])
+    const [filter, setFilter] = useState("all");
+
+    const filterTodos = (filter) => {
+      switch (filter) {
+        case "all":
+          return todos;
+        case "active":
+          return todos.filter((todo) => !todo.isComplete);
+        case "completed":
+          return todos.filter((todo) => todo.isComplete);
+        default:
+          return todos;
+      }
+    };
+
+    const filteredTodos = filterTodos(filter);
 
     const addTodo = todo => {
         if(!todo.text || /^\s*$/.test(todo.text)){
@@ -44,8 +60,13 @@ function TodoList() {
         <ToDoForm onSubmit={addTodo}/>
       </Form>
       <Row>
-        <TodoRow todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
+        <TodoRow todos={filteredTodos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
       </Row>
+      <Filter>
+        <FilterButton onClick={() => setFilter("all")}>All</FilterButton>
+        <FilterButton onClick={() => setFilter("active")}>Active</FilterButton>
+        <FilterButton onClick={() => setFilter("completed")}>Completed</FilterButton>
+      </Filter>
     </Container>
   )
 }
@@ -57,9 +78,9 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   margin: auto;
-  width: 90%;
-  padding: 30px;
+  width: 100%;
   border-radius: 10px;
+  padding: 0;
 `
 
 const Form = styled.div`
@@ -68,7 +89,6 @@ const Form = styled.div`
   color: white;
   border-radius: 10px;
   width: 60%;
-  // margin: 30px;
   margin: auto;
 `
 
@@ -78,4 +98,28 @@ const Row = styled.div `
   width: 70%;
   margin: auto;
   justify-content: center;
+`
+
+const Filter = styled.div `
+  margin: auto;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  width: 40%;
+`
+
+const FilterButton = styled.button `
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+
+  &:hover {
+    font-size: 15px;
+  }
+
+  &:active {
+    color: #91B6F2;
+  }
 `
