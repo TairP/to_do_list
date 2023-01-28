@@ -1,0 +1,8 @@
+.completed {
+    text-decoration: line-through;
+    opacity: 0.4;
+  }
+  
+  .not {
+    box-shadow: white;
+  }

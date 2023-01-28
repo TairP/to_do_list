@@ -27,7 +27,7 @@ function TodoRow({todos, completeTodo, removeTodo, updateTodo}) {
   }
 
   return todos.map((todo,index) => (
-    <Row name={todo.isCompleted ? 'completed' : 'notCompleted'} key={index}>
+    <Row className={todo.isComplete ? 'completed' : 'not'} key={index}>
     <Todo key={todo.id} onClick={()=>completeTodo(todo.id)}>
         {todo.text}
     </Todo>
