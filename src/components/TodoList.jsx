@@ -39,20 +39,20 @@ function TodoList() {
     }
 
   return (
-    <StyledContainer>
-      <StyledSubmit>
+    <Container>
+      <Form>
         <ToDoForm onSubmit={addTodo}/>
-      </StyledSubmit>
-      <StyledTodoList>
+      </Form>
+      <Row>
         <TodoRow todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
-      </StyledTodoList>
-    </StyledContainer>
+      </Row>
+    </Container>
   )
 }
 
 export default TodoList
 
-const StyledContainer = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -62,7 +62,7 @@ const StyledContainer = styled.div`
   border-radius: 10px;
 `
 
-const StyledSubmit = styled.div`
+const Form = styled.div`
   display: flex;
   justify-content: center;
   color: white;
@@ -72,7 +72,7 @@ const StyledSubmit = styled.div`
   margin: auto;
 `
 
-const StyledTodoList = styled.div `
+const Row = styled.div `
   display: flex;
   flex-direction: column;
   width: 70%;

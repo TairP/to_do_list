@@ -21,26 +21,26 @@ function TodoRow({todos, completeTodo, removeTodo, updateTodo}) {
 
   if (edit.id) {
     return (
-    <StyledEditedTodo>
+    <Form>
     <TodoForm edit={edit} onSubmit={submitUpdate}/>
-    </StyledEditedTodo>)
+    </Form>)
   }
 
   return todos.map((todo,index) => (
-    <StyledTodoRow $mood={todo.isCompleted ? 'completed' : 'notCompleted'} key={index}>
-      <StyledTodo key={todo.id} onClick={()=>completeTodo(todo.id)}>
-          {todo.text}
-      </StyledTodo>
-      <StyledIcons>
-        <StyledDeleteButton>
-          <AiOutlineCloseCircle onClick={() => removeTodo(todo.id)}/>
-        </StyledDeleteButton>
-        <StyledEditButton>
-          <AiOutlineEdit onClick={() => setEdit({id: todo.id, value: todo.text})}/>
-        </StyledEditButton>
-      </StyledIcons>
-    </StyledTodoRow>
-  ))
+    <Row name={todo.isCompleted ? 'completed' : 'notCompleted'} key={index}>
+    <Todo key={todo.id} onClick={()=>completeTodo(todo.id)}>
+        {todo.text}
+    </Todo>
+    <Icons>
+      <DeleteButton>
+        <AiOutlineCloseCircle onClick={() => removeTodo(todo.id)}/>
+      </DeleteButton>
+      <EditButton>
+        <AiOutlineEdit onClick={() => setEdit({id: todo.id, value: todo.text})}/>
+      </EditButton>
+    </Icons>
+  </Row>
+))
 }
 // value={{ color: 'blue', size: '50px' }}
 // .complete {
@@ -51,92 +51,84 @@ function TodoRow({todos, completeTodo, removeTodo, updateTodo}) {
 
 export default TodoRow
 
-const StyledTodoRow = styled.div`
-${(props) => {
-  switch (props.$mode) {
-    case 'completed':
-      return `
-        text-decoration: line-through;
-        opacity: 0.4;
-      `;
-    default:
-      return `
-        display: flex;
-        wrap: nowrap;
-        height: 45px;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 1px auto;
-        background: linear-gradient(
-          90deg,
-          #98BFFF 0%,
-          #98D0FF 100%
-        );
-        border-radius: 8px;
-        color: black;
-
-        &:nth-child(4n + 1) {
-          background: linear-gradient(
-            90deg,
-            #BAD0F5 0%,
-            #6EA9FF 100%
-          );
-        }
-        
-        &:nth-child(4n + 2) {
-          background: linear-gradient(
-            90deg,
-            #C2E6FE 0%,
-            #89BDFF 100%
-          );
-        }
-        
-        &:nth-child(4n + 3) {
-          background: linear-gradient(
-            90deg,
-            #A7E3FF 0%,
-            #82BCFF 100%
-          );
-      `; 
-  }
-}}
+const Form = styled.div`
+display: flex;
+flex-wrap: wrap;
+font-size: 15px;
+padding: 20px;
+width: 87%;
+margin: auto;
 `
 
-const StyledTodo = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 15px;
-  padding: 20px;
+const Row = styled.div`
+display: flex;
+wrap: nowrap;
+height: 45px;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+margin: 1px auto;
+background: linear-gradient(
+  90deg,
+  #98BFFF 0%,
+  #98D0FF 100%
+);
+border-radius: 8px;
+color: black;
+
+&:nth-child(4n + 1) {
+  background: linear-gradient(
+  90deg,
+  #BAD0F5 0%,
+  #6EA9FF 100%
+  );
+}
+&:nth-child(4n + 2) {
+  background: linear-gradient(
+    90deg,
+    #C2E6FE 0%,
+    #89BDFF 100%
+    );
+  }
+  &:nth-child(4n + 3) {
+    background: linear-gradient(
+      90deg,
+      #A7E3FF 0%,
+      #82BCFF 100%
+      );
+    }
 `
 
-const StyledIcons = styled.div`
-  display: flex;
-  padding: 20px;
-  font-size: 25px;
-  padding-bottom: 15px;
+const Todo = styled.div `
+display: flex;
+width: 87%;
+margin: auto;
+font-size: 15px;
+padding: 10px;
+margin-left: 10px;
 `
 
-const StyledDeleteButton = styled.div`
-  &:hover{
-    color: white;
-  }
-  &:active{
-    color: gray;
-  }
+const Icons = styled.div`
+display: flex;
+padding: 20px;
+font-size: 25px;
+padding-bottom: 15px;
 `
 
-const StyledEditButton = styled.div`
-  &:hover{
-    color: white;
-  }
-  &:active{
-    color: gray;
-  }
+const DeleteButton = styled.div`
+&:hover{
+  color: white;
+}
+&:active{
+  color: gray;
+}
 `
 
-const StyledEditedTodo = styled.div `
-  display: flex;
-  width: 87%;
-  margin: auto;
+const EditButton = styled.div`
+&:hover{
+  color: white;
+}
+&:active{
+  color: gray;
+}
 `

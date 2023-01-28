@@ -25,35 +25,35 @@ function TodoForm(props) {
     }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       {props.edit ? (
       <>
-      <StyledInput type="text"
+      <Input type="text"
       placeholder="Update your task"
       value={input}
       name="text"
       onChange={handleChange}
       ref={inputRef}>
-      </StyledInput>
-      <StyledButton>Update</StyledButton>
+      </Input>
+      <Button>Update</Button>
       </>) : (
       <>
-      <StyledInput type="text"
+      <Input type="text"
       placeholder="What do you need to do today?"
       value={input}
       name="text"
       onChange={handleChange}
       ref={inputRef}>
-      </StyledInput>
-      <StyledButton>Add Todo</StyledButton>
+      </Input>
+      <Button>Add Todo</Button>
       </>)}
-    </StyledForm>
+    </Form>
   )
 }
 
 export default TodoForm
 
-const StyledForm = styled.form`
+const Form = styled.form`
   border: 3px solid #91B6F2;
   border-radius: 10px;
   background-color: black;
@@ -63,7 +63,7 @@ const StyledForm = styled.form`
   margin: 40px;
 `
 
-const StyledInput = styled.input`
+const Input = styled.input`
   background-color: black;
   border: none;
   border-radius: 5px;
@@ -78,7 +78,7 @@ const StyledInput = styled.input`
   }
 `
 
-const StyledButton = styled.button`
+const Button = styled.button`
   background-color: #91B6F2;
   border: none;
   border-radius: 3px;
